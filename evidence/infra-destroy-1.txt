@@ -1,0 +1,29 @@
+Acquiring state lock. This may take a few moments...
+azurerm_monitor_metric_alert.cpu: Destroying... [id=REDACTED]
+azurerm_storage_account.lab: Destroying... [id=REDACTED]
+azurerm_monitor_metric_alert.cpu: Destruction complete after 3s
+azurerm_monitor_action_group.email: Destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Destroying... [id=REDACTED]
+azurerm_storage_account.lab: Destruction complete after 3s
+random_string.suffix: Destroying... [id=b59tbysv]
+random_string.suffix: Destruction complete after 0s
+azurerm_monitor_action_group.email: Destruction complete after 1s
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Destruction complete after 33s
+azurerm_network_interface.vm: Destroying... [id=REDACTED]
+azurerm_network_interface.vm: Still destroying... [id=REDACTED]
+azurerm_network_interface.vm: Destruction complete after 12s
+azurerm_subnet.vm: Destroying... [id=REDACTED]
+azurerm_subnet.vm: Still destroying... [id=REDACTED]
+azurerm_subnet.vm: Destruction complete after 10s
+azurerm_virtual_network.lab: Destroying... [id=REDACTED]
+azurerm_virtual_network.lab: Still destroying... [id=REDACTED]
+azurerm_virtual_network.lab: Destruction complete after 12s
+azurerm_resource_group.lab: Destroying... [id=REDACTED]
+azurerm_resource_group.lab: Still destroying... [id=REDACTED]
+azurerm_resource_group.lab: Destruction complete after 16s
+Releasing state lock. This may take a few moments...
+
+Apply complete! Resources: 0 added, 0 changed, 9 destroyed.
