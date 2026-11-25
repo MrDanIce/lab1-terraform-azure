@@ -1,6 +1,6 @@
 # Lab 1: Terraform on Azure with plan-on-PR
 
-Status: both configurations pass validate. Bootstrap applied; infra not applied yet. See `evidence/RESULTS.md`.
+Status: both configurations pass validate. Bootstrap and infra applied; alert test and destroy pending. See `evidence/RESULTS.md`.
 
 Provisions a small Linux VM, network, storage account and CPU alert. Pull requests run format, validate and plan. Apply is manual because CI only has read access.
 
