@@ -44,7 +44,7 @@ Check Azure Monitor > Alerts for `alert-lab1-cpu`. It fires when average CPU is 
 | Infra apply | 9 added (8 in Azure, 1 random suffix) |
 | Infra apply from a clean clone | 9 added, no drift |
 | Infra destroy, run twice | 9 destroyed each time |
-| Pull requests with passing checks | 4 of 4 at the time of writing |
+| Pull requests with passing checks | 6 of 6 (pull requests 1 to 6) |
 | CPU alert | Fired 446 seconds after the load command |
 
 ![CPU alert fired](evidence/cpu-alert.png)
