@@ -1,0 +1,3 @@
+github_repo       = "your-user/lab1-terraform-azure"
+budget_email      = "you@example.com"
+budget_start_date = "2026-11-01T00:00:00Z"
