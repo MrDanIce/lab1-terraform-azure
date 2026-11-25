@@ -10,3 +10,5 @@ Redact subscription IDs, tenant IDs and emails before saving output or screensho
 | 2026-11-25 | same, Standard_B2pts_v2 | terraform apply (infra) | evidence/infra-apply.txt | 9 resources added, 0 changed, 0 destroyed |
 | 2026-11-25 | GitHub Actions | pull request 1 checks | check (bootstrap), check (infra), plan all pass | 3 of 3 checks passing, 1 pull request |
 | 2026-11-25 | Standard_B2pts_v2, westus2 | az vm run-command CPU load, 12 minutes | evidence/alert-test.txt | Alert fired once; 446 seconds from load command to alert start |
+| 2026-11-25 | Azure portal | Monitor > Alerts | evidence/cpu-alert.png | alert-lab1-cpu shown as Fired |
+| 2026-11-25 | GitHub Actions | pull requests 1 to 3 | check (bootstrap), check (infra), plan all pass on each | 3 of 3 pull requests passing |
