@@ -1,28 +1,28 @@
 Acquiring state lock. This may take a few moments...
-azurerm_monitor_metric_alert.cpu: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Insights/metricAlerts/alert-lab1-cpu]
-azurerm_storage_account.lab: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Storage/storageAccounts/stlab1a2ctb9yr]
+azurerm_monitor_metric_alert.cpu: Destroying... [id=REDACTED]
+azurerm_storage_account.lab: Destroying... [id=REDACTED]
 azurerm_monitor_metric_alert.cpu: Destruction complete after 2s
-azurerm_monitor_action_group.email: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Insights/actionGroups/ag-lab1-email]
-azurerm_linux_virtual_machine.lab: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Compute/virtualMachines/vm-lab1]
+azurerm_monitor_action_group.email: Destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Destroying... [id=REDACTED]
 azurerm_storage_account.lab: Destruction complete after 3s
 random_string.suffix: Destroying... [id=a2ctb9yr]
 random_string.suffix: Destruction complete after 0s
 azurerm_monitor_action_group.email: Destruction complete after 1s
-azurerm_linux_virtual_machine.lab: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...rosoft.Compute/virtualMachines/vm-lab1, 00m10s elapsed]
-azurerm_linux_virtual_machine.lab: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...rosoft.Compute/virtualMachines/vm-lab1, 00m20s elapsed]
-azurerm_linux_virtual_machine.lab: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...rosoft.Compute/virtualMachines/vm-lab1, 00m30s elapsed]
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
+azurerm_linux_virtual_machine.lab: Still destroying... [id=REDACTED]
 azurerm_linux_virtual_machine.lab: Destruction complete after 35s
-azurerm_network_interface.vm: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Network/networkInterfaces/nic-lab1]
-azurerm_network_interface.vm: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...oft.Network/networkInterfaces/nic-lab1, 00m10s elapsed]
+azurerm_network_interface.vm: Destroying... [id=REDACTED]
+azurerm_network_interface.vm: Still destroying... [id=REDACTED]
 azurerm_network_interface.vm: Destruction complete after 12s
-azurerm_subnet.vm: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Network/virtualNetworks/vnet-lab1/subnets/snet-vm]
-azurerm_subnet.vm: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...tualNetworks/vnet-lab1/subnets/snet-vm, 00m10s elapsed]
+azurerm_subnet.vm: Destroying... [id=REDACTED]
+azurerm_subnet.vm: Still destroying... [id=REDACTED]
 azurerm_subnet.vm: Destruction complete after 11s
-azurerm_virtual_network.lab: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1/providers/Microsoft.Network/virtualNetworks/vnet-lab1]
-azurerm_virtual_network.lab: Still destroying... [id=/subscriptions/3c274a91-a626-4cbe-a485-...soft.Network/virtualNetworks/vnet-lab1, 00m10s elapsed]
+azurerm_virtual_network.lab: Destroying... [id=REDACTED]
+azurerm_virtual_network.lab: Still destroying... [id=REDACTED]
 azurerm_virtual_network.lab: Destruction complete after 11s
-azurerm_resource_group.lab: Destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1]
-azurerm_resource_group.lab: Still destroying... [id=/subscriptions/REDACTED/resourceGroups/rg-lab1, 00m10s elapsed]
+azurerm_resource_group.lab: Destroying... [id=REDACTED]
+azurerm_resource_group.lab: Still destroying... [id=REDACTED]
 azurerm_resource_group.lab: Destruction complete after 17s
 Releasing state lock. This may take a few moments...
 
