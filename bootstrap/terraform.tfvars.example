@@ -1,3 +1,3 @@
-github_repo       = "your-user/lab1-terraform-azure"
+github_repo       = "your-user@OWNER_ID/lab1-terraform-azure@REPO_ID" # gh api repos/OWNER/REPO/actions/oidc/customization/sub
 budget_email      = "you@example.com"
 budget_start_date = "2026-11-01T00:00:00Z"

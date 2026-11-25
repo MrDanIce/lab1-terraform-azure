@@ -5,7 +5,7 @@ variable "location" {
 }
 
 variable "github_repo" {
-  description = "GitHub repository allowed to run plans, as owner/name."
+  description = "GitHub repository allowed to run plans, as owner@ownerID/name@repoID (immutable OIDC subject)."
   type        = string
 }
 
