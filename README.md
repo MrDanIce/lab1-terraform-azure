@@ -19,10 +19,22 @@ Provisions a small Linux VM, network, storage account and CPU alert. Pull reques
 
 ## How to run
 
+0. On a new subscription, register the providers once: `az provider register -n NAME` for Microsoft.Compute, Microsoft.Network, Microsoft.Storage, Microsoft.ManagedIdentity and microsoft.insights.
 1. Install Terraform and Azure CLI, then `az login` and set `ARM_SUBSCRIPTION_ID` in your shell.
 2. In `bootstrap/`, copy `terraform.tfvars.example` to `terraform.tfvars`, edit, then `terraform init`, `plan`, `apply`.
 3. Add GitHub secrets `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`, `ALERT_EMAIL`, `SSH_PUBLIC_KEY` and variables `STATE_RESOURCE_GROUP`, `STATE_STORAGE_ACCOUNT`.
 4. In `infra/`, copy both `.example` files without the suffix, edit, then `terraform init -backend-config=backend.hcl`, `plan`, `apply`.
+
+## Test the CPU alert
+
+The VM has no public IP, so load is started through the Azure control plane. Each load process stops by itself after 12 minutes.
+
+```bash
+az vm run-command invoke -g rg-lab1 -n vm-lab1 --command-id RunShellScript \
+  --scripts 'for i in 1 2; do nohup timeout 720 sh -c "while :; do :; done" >/dev/null 2>&1 & done'
+```
+
+Check Azure Monitor > Alerts for `alert-lab1-cpu`. It fires when average CPU is above `cpu_threshold` (default 70) over 5 minutes.
 
 ## Cost control
 
