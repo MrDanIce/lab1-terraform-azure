@@ -1,6 +1,6 @@
 # Lab 1: Terraform on Azure with plan-on-PR
 
-Status: both configurations pass validate. Bootstrap and infra applied; alert test and destroy pending. See `evidence/RESULTS.md`.
+Status: both configurations pass validate. Bootstrap and infra applied; alert tested; clean clone and destroy pending. See `evidence/RESULTS.md`.
 
 Provisions a small Linux VM, network, storage account and CPU alert. Pull requests run format, validate and plan. Apply is manual because CI only has read access.
 
@@ -35,6 +35,17 @@ az vm run-command invoke -g rg-lab1 -n vm-lab1 --command-id RunShellScript \
 ```
 
 Check Azure Monitor > Alerts for `alert-lab1-cpu`. It fires when average CPU is above `cpu_threshold` (default 70) over 5 minutes.
+
+## Results so far
+
+| Item | Result |
+|---|---|
+| Bootstrap apply | 10 added |
+| Infra apply | 9 added |
+| Pull requests with passing checks | 3 of 3 |
+| CPU alert | Fired 446 seconds after the load command |
+
+![CPU alert fired](evidence/cpu-alert.png)
 
 ## Cost control
 
