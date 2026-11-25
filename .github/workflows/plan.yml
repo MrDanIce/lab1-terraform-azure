@@ -1,0 +1,72 @@
+name: terraform-plan
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: [bootstrap, infra]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.17.2
+      - run: terraform fmt -check -recursive
+      - run: terraform -chdir=${{ matrix.dir }} init -backend=false -input=false
+      - run: terraform -chdir=${{ matrix.dir }} validate
+
+  plan:
+    needs: check
+    # Fork pull requests never get the Azure login.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    env:
+      ARM_USE_OIDC: "true"
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_RESOURCE_PROVIDER_REGISTRATIONS: none
+      TF_VAR_alert_email: ${{ secrets.ALERT_EMAIL }}
+      TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
+      STATE_RG: ${{ vars.STATE_RESOURCE_GROUP }}
+      STATE_SA: ${{ vars.STATE_STORAGE_ACCOUNT }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.17.2
+          terraform_wrapper: false
+      - name: Init
+        working-directory: infra
+        run: |
+          terraform init -input=false \
+            -backend-config="resource_group_name=$STATE_RG" \
+            -backend-config="storage_account_name=$STATE_SA"
+      - name: Plan
+        working-directory: infra
+        # No lock: the CI identity can only read state.
+        run: terraform plan -input=false -no-color -lock=false > "$RUNNER_TEMP/plan.txt"
+      - name: Post redacted plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          # GitHub masks secrets in logs but not in comments, so redact GUIDs here.
+          {
+            echo '### terraform plan'
+            echo '```'
+            sed -E 's/[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}/REDACTED/g' "$RUNNER_TEMP/plan.txt" | head -c 60000
+            echo
+            echo '```'
+          } > "$RUNNER_TEMP/comment.md"
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"
